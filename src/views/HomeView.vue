@@ -2,11 +2,7 @@
 import btn from "@/components/btn.vue";
 const addValue = (val) => {
   let inp = document.querySelector("input.result");
-<<<<<<< HEAD
   if (!isNaN(val)) {
-=======
-  if (!isNaN(val) || val == ".") {
->>>>>>> 403d46ba3fb607711e238af0d0047ec8ab528d06
     inp.value = inp.value + val;
   } else if (val == "=") {
     if (
@@ -24,7 +20,6 @@ const addValue = (val) => {
     inp.value = inp.value.slice(0, -1);
   } else if (val == "AC") {
     inp.value = "";
-<<<<<<< HEAD
   } else if (val == ".") {
     if (inp.value.slice(-1) == "." || inp.value.length == 0) {
       console.log("f");
@@ -43,25 +38,6 @@ const addValue = (val) => {
     } else {
       inp.value = inp.value + val;
     }
-=======
-  } else if (val == "."){
-    if(inp.value.slice(-1) !== "." && inp.value.length > 0){
-      inp.value = inp.value + val;
-    }else {console.log("f")
-    }
-  }else {
-    if (
-      inp.value.length == 0 ||
-      inp.value.slice(-1) == "+" ||
-      inp.value.slice(-1) == "-" ||
-      inp.value.slice(-1) == "/" ||
-      inp.value.slice(-1) == "*"
-    ) {
-      console.log("d");
-    } else {
-      inp.value = inp.value + val;
-    }
->>>>>>> 403d46ba3fb607711e238af0d0047ec8ab528d06
   }
 };
 </script>
