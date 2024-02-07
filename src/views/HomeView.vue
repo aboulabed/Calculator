@@ -20,7 +20,12 @@ const addValue = (val) => {
     inp.value = inp.value.slice(0, -1);
   } else if (val == "AC") {
     inp.value = "";
-  } else {
+  } else if (val == "."){
+    if(inp.value.slice(-1) !== "." && inp.value.length > 0){
+      inp.value = inp.value + val;
+    }else {console.log("f")
+    }
+  }else {
     if (
       inp.value.length == 0 ||
       inp.value.slice(-1) == "+" ||
