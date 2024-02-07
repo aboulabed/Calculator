@@ -78,7 +78,7 @@ export default {
   margin: 20px;
   text-align: center;
   width: 97vw;
-  height: 65vh;
+  height: calc(65vh - 10px);
   input.result {
     width: calc(100% - 10px);
     background-color: #1a1a1a;
