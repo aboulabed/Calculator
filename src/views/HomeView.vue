@@ -1,27 +1,43 @@
 <script setup>
 import btn from "@/components/btn.vue";
-import { invalidateTypeCache } from "vue/compiler-sfc";
 const addValue = (val) => {
   let inp = document.querySelector("input.result");
-  if (val == "DEL") {
+  if (!isNaN(val)) {
+    inp.value = inp.value + val;
+  } else if (val == "=") {
+    if (
+      inp.value.length == 0 ||
+      inp.value.slice(-1) == "+" ||
+      inp.value.slice(-1) == "-" ||
+      inp.value.slice(-1) == "/" ||
+      inp.value.slice(-1) == "*"
+    ) {
+      console.log("df");
+    } else {
+      inp.value = eval(inp.value);
+    }
+  } else if (val == "DEL") {
     inp.value = inp.value.slice(0, -1);
   } else if (val == "AC") {
     inp.value = "";
-  } else if (
-    inp.value.slice(-1) == "+" ||
-    inp.value.slice(-1) == "*" ||
-    inp.value.slice(-1) == "/" ||
-    inp.value.slice(-1) == "-"
-  ) {
-    if (val == "+" || val == "*" || val == "/" || val == "-") {
-      inp.value = inp.value;
+  } else if (val == ".") {
+    if (inp.value.slice(-1) == "." || inp.value.length == 0) {
+      console.log("f");
     } else {
       inp.value = inp.value + val;
     }
-  } else if (val == "=") {
-    inp.value = eval(inp.value);
   } else {
-    inp.value = inp.value + val;
+    if (
+      inp.value.length == 0 ||
+      inp.value.slice(-1) == "+" ||
+      inp.value.slice(-1) == "-" ||
+      inp.value.slice(-1) == "/" ||
+      inp.value.slice(-1) == "*"
+    ) {
+      console.log("d");
+    } else {
+      inp.value = inp.value + val;
+    }
   }
 };
 </script>
@@ -65,22 +81,29 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
-  margin: 20px auto;
+  margin: 20px;
   text-align: center;
-  width: 60%;
-  height: 100%;
+  width: 97vw;
+  height: calc(65vh - 10px);
   input.result {
-    width: 100%;
+    width: calc(100% - 10px);
     background-color: #1a1a1a;
     border: none;
-    padding: 3px 10px;
-    border-radius: 6px;
+    padding: 25px;
+    border-radius: 8px;
     margin-bottom: 15px;
-    height: 35px;
+    height: 85px;
+    font-size: 40px;
     color: #fff;
+    cursor: text;
   }
   .row {
-    height: 60px;
+    height: calc(100% / 3);
+    .btn {
+      font-size: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
     &:last-of-type .btn {
       width: calc(100% / 3);
     }
