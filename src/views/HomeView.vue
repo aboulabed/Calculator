@@ -2,7 +2,7 @@
 import btn from "@/components/btn.vue";
 const addValue = (val) => {
   let inp = document.querySelector("input.result");
-  if (!isNaN(val)) {
+  if (!isNaN(val) && val != "0") {
     inp.value = inp.value + val;
   } else if (val == "=") {
     if (
@@ -12,7 +12,7 @@ const addValue = (val) => {
       inp.value.slice(-1) == "/" ||
       inp.value.slice(-1) == "*"
     ) {
-      console.log("df");
+      ;
     } else {
       inp.value = eval(inp.value);
     }
@@ -22,9 +22,19 @@ const addValue = (val) => {
     inp.value = "";
   } else if (val == ".") {
     if (inp.value.slice(-1) == "." || inp.value.length == 0) {
-      console.log("f");
+      ;
     } else {
       inp.value = inp.value + val;
+    }
+  }else if(val == "0"){
+    if (inp.value.length > 0 && 
+      inp.value.slice(-1) !== "+" &&
+      inp.value.slice(-1) !== "-" &&
+      inp.value.slice(-1) !== "/" &&
+      inp.value.slice(-1) !== "*"){
+      inp.value = inp.value + val;
+
+      
     }
   } else {
     if (
@@ -34,7 +44,7 @@ const addValue = (val) => {
       inp.value.slice(-1) == "/" ||
       inp.value.slice(-1) == "*"
     ) {
-      console.log("d");
+      ;
     } else {
       inp.value = inp.value + val;
     }
