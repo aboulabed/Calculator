@@ -21,7 +21,7 @@ const addValue = (val) => {
   } else if (val == "AC") {
     inp.value = "";
   } else if (val == ".") {
-    if (inp.value.slice(-1) == "." || inp.value.length == 0) {
+    if (inp.value.slice(-1) == "." ) {
       ;
     } else {
       inp.value = inp.value + val;
